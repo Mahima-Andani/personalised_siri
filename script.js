@@ -1,6 +1,6 @@
 const btn = document.querySelector('.talk');
 const content = document.querySelector('.content');
-
+var element = document.querySelector('.pulse-ring');
 
 const YouTube = [
     'opening youtube'
@@ -12,21 +12,24 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 const recognition =  new SpeechRecognition();
 
 recognition.onstart = function(){
-    console.log('How Can I Help You ?')
+    console.log('How Can I Help You?')
 }
 recognition.onresult = function (event) {
+
     const current = event.resultIndex;
 
     const transcript = event.results[current][0].transcript;
     content.textContent = transcript;
     readOutLoud(transcript);
-
 };
-
+recognition.onaudioend = function() {
+    console.log('Audio capturing ended');
+    element.classList.remove("animate");
+  }  
 btn.addEventListener('click', function () {
         recognition.start();
+        element.classList.add("animate");
     });
-
 
 function readOutLoud(message){
     var speech = new SpeechSynthesisUtterance();

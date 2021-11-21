@@ -1,4 +1,56 @@
-h1 {color: crimson;}
-.talk{background-color: cyan;
-        border-radius: 20px;}
-.content{color: cyan;}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .btn {
+    border: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    font-size: 3em;
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+    margin-left: 10%;
+    background: #189BFF;
+  }
+  
+  .pulse-ring {
+    content: "";
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+}
+.btn .pulse-ring{
+    background: transparent;
+}
+.animate{
+    background: #189BFF;
+    border: 5px solid #189BFF;
+    animation: pulsate infinite 1.5s;
+  }
+  
+  @-webkit-keyframes pulsate {
+    0% {
+      -webkit-transform: scale(1, 1);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1.5, 1.5);
+      opacity: 0;
+    }
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* background-color: #d8d8d8; */
+  }

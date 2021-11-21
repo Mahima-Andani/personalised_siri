@@ -23,9 +23,9 @@ recognition.onresult = function (event) {
 
 };
 
-btn.addEventListener('click', () =>{
-    recognition.start();
-});
+btn.addEventListener('click', function () {
+        recognition.start();
+    });
 
 
 function readOutLoud(message){

@@ -29,7 +29,12 @@ btn.addEventListener('click', function () {
 
 
 function readOutLoud(message){
-    const speech = new SpeechSynthesisUtterance();
+    var speech = new SpeechSynthesisUtterance();
+
+    const synth = window.speechSynthesis;
+    const voiceArray = synth.getVoices(); // returns array of voice objects
+    console.log(voiceArray);
+    speech.voice = voiceArray[4];
 
     speech.text = 'I am not able to understand';
 

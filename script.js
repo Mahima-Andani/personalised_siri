@@ -55,7 +55,12 @@ function readOutLoud(message){
         musicCovers = ["https://www.youtube.com/watch?v=Pkh8UtuejGw&list=RDMMQJO3ROT-A4E&index=2", "https://www.youtube.com/watch?v=QJO3ROT-A4E&list=RDMMQJO3ROT-A4E&start_radio=1"];
         window.open(musicCovers[Math.floor(Math.random()*musicCovers.length)]);
     }
-
+    if(message.includes('search')){
+        speech.text = "searching"; 
+        var q = message.replace("search", "");
+        window.open('http://google.com/search?q='+q);
+    }
+    
     speech.volume = 1;
     speech.rate = 1.1;
     speech.pitch = 2;

@@ -1,5 +1,8 @@
 const btn = document.querySelector('.talk');
 const content = document.querySelector('.content');
+const d = new Date();
+document.getElementById("demo").innerHTML = d.getFullYear();
+
 
 
 const YouTube = [
@@ -20,15 +23,20 @@ const email = [
 const jokes = [
     'Here are some hilarious jokes, Knock, knock.\"\n\"Whos there?\"\n\n[very long pause]\n\n\"Java.\, Judge: \"I sentence you to the maximum punishment...\"\nMe (thinking): \"Please be death, please be death...\"\nJudge: \"Learn Java!\"\nMe: \"Damn.\ '
 ]
+const camera = [
+    'Opening camera..'
+]
+const year = [
+    'todays date is,' + d
+    
+]
+
 let camera_button = document.querySelector("#start-camera");
 let video = document.querySelector("#video");
 let click_button = document.querySelector("#click-photo");
 let canvas = document.querySelector("#canvas");
 
-camera_button.addEventListener('click', async function() {
-   	let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-	video.srcObject = stream;
-});
+
 
 click_button.addEventListener('click', function() {
    	canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -37,6 +45,7 @@ click_button.addEventListener('click', function() {
    	// data url of the image
    	console.log(image_data_url);
 });
+
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition =  new SpeechRecognition();
@@ -106,6 +115,15 @@ function readOutLoud(message){
         speech.text = finalText; 
         // window.open('https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single&amount=10').;
     }
+    
+    if(message.includes('year')){
+        const finalText = 
+        year[Math.floor(Math.random()*year.length)];
+        speech.text = finalText;   
+    }
+    
+
+
     
 
 
